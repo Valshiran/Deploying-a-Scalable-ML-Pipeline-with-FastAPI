@@ -47,9 +47,15 @@ def test_train_model_algorithm_and_type():
 
 
 # TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_inference():
     """
-    # add description for the third test
+    Test that inference returns predictions matching input row count.
     """
-    # Your code here
-    pass
+    X_dummy = np.array([[1, 2], [3, 4], [5, 6]])
+    y_dummy = np.array([0, 1, 0])
+
+    model = train_model(X_dummy, y_dummy)
+    preds = inference(model, X_dummy)
+
+    assert isinstance(preds, np.ndarray)
+    assert len(preds) == len(X_dummy)

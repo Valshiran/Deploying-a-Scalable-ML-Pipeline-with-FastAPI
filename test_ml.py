@@ -1,13 +1,32 @@
 import pytest
-# TODO: add necessary import
+import numpy as np
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from ml.data import process_data
+from ml.model import compute_model_metrics, inference, train_model
 
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
+
+def test_compute_model_metrics():
     """
-    # add description for the first test
+    Test that compute_model_metrics calculates precision, recall, and F1 score correctly.
     """
-    # Your code here
-    pass
+    y_true = np.array([1, 1, 0, 0, 1, 0])
+    y_pred = np.array([1, 1, 1, 0, 0, 0])
+
+    precision, recall, fbeta = compute_model_metrics(y_true, y_pred)
+
+    # Validate output types (floats or numeric types)
+    assert isinstance(precision, (float, np.floating)), "Precision must be a float."
+    assert isinstance(recall, (float, np.floating)), "Recall must be a float."
+    assert isinstance(fbeta, (float, np.floating)), "F1-score must be a float."
+
+    # Validate exact known outputs
+    # True Positives = 2, False Positives = 1, False Negatives = 1
+    # Precision = 2 / (2 + 1) = 0.6667
+    # Recall = 2 / (2 + 1) = 0.6667
+    assert pytest.approx(precision, 0.001) == 2 / 3
+    assert pytest.approx(recall, 0.001) == 2 / 3
+    assert pytest.approx(fbeta, 0.001) == 2 / 3
 
 
 # TODO: implement the second test. Change the function name and input as needed

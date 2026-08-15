@@ -44,6 +44,8 @@ def process_data(
         passed in.
     """
 
+    # This script was provided - I reviewed this as a part of step 2
+    
     if label is not None:
         y = X[label]
         X = X.drop([label], axis=1)

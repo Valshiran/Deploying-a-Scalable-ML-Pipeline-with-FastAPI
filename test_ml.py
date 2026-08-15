@@ -29,13 +29,21 @@ def test_compute_model_metrics():
     assert pytest.approx(fbeta, 0.001) == 2 / 3
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_train_model_algorithm_and_type():
     """
-    # add description for the second test
+    Test that train_model returns a fitted Scikit-Learn RandomForestClassifier instance.
     """
-    # Your code here
-    pass
+    X_dummy = np.array([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0], [7.0, 8.0]])
+    y_dummy = np.array([0, 0, 1, 1])
+
+    model = train_model(X_dummy, y_dummy)
+
+    # Verify instance type and fitted state
+    assert isinstance(
+        model, RandomForestClassifier
+    ), "Trained model must be an instance of RandomForestClassifier."
+    assert hasattr(model, "classes_"), "Trained model must be fitted with classes_ attribute."
+    assert len(model.classes_) == 2, "Binary model must have 2 classes."
 
 
 # TODO: implement the third test. Change the function name and input as needed

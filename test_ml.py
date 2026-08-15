@@ -46,7 +46,6 @@ def test_train_model_algorithm_and_type():
     assert len(model.classes_) == 2, "Binary model must have 2 classes."
 
 
-# TODO: implement the third test. Change the function name and input as needed
 def test_inference():
     """
     Test that inference returns predictions matching input row count.

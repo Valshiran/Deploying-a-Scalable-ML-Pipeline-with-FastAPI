@@ -79,6 +79,6 @@ async def post_inference(data: Data):
         lb=None,
     )
     
-    # using the inference function with the data_processed we just created
+    # using the inference function with the data_processed we just created 
     _inference = inference(model, data_processed)
     return {"result": apply_label(_inference)}
